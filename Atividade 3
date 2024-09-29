@@ -1,0 +1,117 @@
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        //Variaveis
+        int opcao;
+
+        do {
+            System.out.println("MENU DE OPÇÕES");
+            System.out.println("1 - Masculino");
+            System.out.println("2 - Feminino");
+            System.out.println("0 - Sair");
+            opcao = sc.nextInt();
+            switch (opcao) {
+                case 1:
+                    Calculo p1 = new Calculo();
+                    p1.masculino();
+                    break;
+                case 2:
+                    Calculo p2 = new Calculo();
+                    p2.feminino();
+                    break;
+                case 0 :
+                    break;
+                default:
+                    System.out.println("Numero invalido. Tente novamente.");
+
+            }
+        }while (opcao != 0);
+        sc.close();
+    }
+}
+
+import java.util.Scanner;
+public class Calculo {
+    Scanner sc = new Scanner(System.in);
+
+    int[] ano = new int[105];
+    int[] idade = new int[105];
+    int[] contribuicao = new int[105];
+    int[] pontos = new int[105];
+    int variavelDeControle;
+    int pontmin = 96;
+    String aposentar;
+    public void masculino() {
+        while (true) {
+            System.out.println("Digite a idade da pessoa em 2019");
+            idade[0] = sc.nextInt();
+            System.out.println("Digite o tempo de contribuição da pessoa em 2019");
+            contribuicao[0] = sc.nextInt();
+            if (idade[0] <= contribuicao[0]) {
+                System.out.println("Número invalido. O tempo de contribuição não pode ser maior que a idade");
+            }
+            else {
+                break;
+            }
+        }
+        String[] cabecalho = {"Ano", "Pont.Min", "Pont.Obtida", "Pode Aposentar?"};
+        System.out.println("Sexo: Masculino");
+        System.out.println("Tempo de contribuição em 2019: " + contribuicao[0]);
+        System.out.println("Idade em 2019: " + idade[0]);
+        System.out.printf("%-15s %-15s %-15s %-15s\n", cabecalho[0], cabecalho[1], cabecalho[2], cabecalho[3]);
+                for (int i = 0; variavelDeControle <= 105; i++) {
+                    ano[i] = 2019 + i;
+                    idade[i] = idade[0] + i;
+                    contribuicao[i] = contribuicao[0] + i;
+                    pontos[i] = idade[i] + contribuicao[i];
+                    variavelDeControle = pontos [i];
+                    if (pontos[i] >= pontmin){
+                        aposentar = ("Sim");
+                    }
+                    else {
+                        aposentar = ("Não");
+                    }
+                    System.out.printf("%-15d %-15d %-15d %-15s\n", ano[i], pontmin, pontos[i], aposentar);
+                    if (pontmin < 105) {
+                        pontmin++;
+                    }
+                }
+    }
+    public void feminino() {
+        while (true) {
+            System.out.println("Digite a idade da pessoa em 2019 ");
+            idade[0] = sc.nextInt();
+            System.out.println("Digite o tempo de contribuição da pessoa em 2019");
+            contribuicao[0] = sc.nextInt();
+            if (idade[0] <= contribuicao[0]) {
+                System.out.println("Número invalido. O tempo de contribuição não pode ser maior que a idade");
+            }
+            else {
+                break;
+            }
+        }
+        String[] cabecalho = {"Ano", "Pont.Min", "Pont.Obtida", "Pode Aposentar?"};
+        System.out.println("Sexo:Feminino");
+        System.out.println("Tempo de contribuição em 2019: " + contribuicao[0]);
+        System.out.println("Idade em 2019: " + idade[0]);
+        System.out.printf("%-15s %-15s %-15s %-15s\n", cabecalho[0], cabecalho[1], cabecalho[2], cabecalho[3]);
+        for (int i = 0; variavelDeControle <= 100; i++) {
+            ano[i] = 2019 + i;
+            idade[i] = idade[0] + i;
+            contribuicao[i] = contribuicao[0] + i;
+            pontos[i] = idade[i] + contribuicao[i];
+            variavelDeControle = pontos [i];
+            if (pontos[i] >= pontmin){
+                aposentar = ("Sim");
+            }
+            else {
+                aposentar = ("Nao");
+            }
+            System.out.printf("%-15d  %-15d %-15d %-15s\n", ano[i], pontmin, pontos[i], aposentar);
+            if (pontmin < 100) {
+                pontmin++;
+            }
+        }
+    }
+}
