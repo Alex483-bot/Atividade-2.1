@@ -1,0 +1,35 @@
+import java.util.Random;
+import java.util.HashSet;
+public class Main {
+    public static void main(String[] args) {
+        double maior =0;
+        double maior2 =0;
+        int matriculanota1=0;
+        int matriculanota2=0;
+        double[] nota = new double [100];
+        int[] matricula = new int [100];
+        HashSet <Integer> repetido = new HashSet<>();
+        HashSet <Double> repetido2 = new HashSet<>();
+        for (int i = 0; i< nota.length; i++) {
+            do {
+                matricula[i] = new Random().nextInt(100) + 1;
+            }while (repetido.contains(matricula[i]));
+            repetido.add(matricula[i]);
+            do {
+                nota[i] = new Random().nextDouble()*10;
+            }while (repetido2.contains(nota[i]));
+            repetido2.add(nota[i]);
+            if (nota[i]> maior) {
+                maior = nota[i];
+                matriculanota1 = matricula[i];
+            }
+            if (nota[i]>maior2 && nota[i]< maior) {
+                maior2 = nota[i];
+                matriculanota2 = matricula[i];
+            }
+        }
+        System.out.printf("A maior nota foi %.2f do aluno com a matricula %d\n", maior, matriculanota1);
+        System.out.printf("A segunda maior nota foi %.2f do aluno com matricula %d\n", maior2, matriculanota2);
+
+    }
+}
