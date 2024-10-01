@@ -1,1 +1,30 @@
+import java.util.Scanner;
 
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Solicitar o valor de n ao usuário
+        System.out.print("Digite o valor de n: ");
+        int n = scanner.nextInt();
+
+        // Variável para armazenar o valor base da sequência
+        int base = 1;
+
+        // Gerar e imprimir a série
+        for (int i = 1; i <= n; i++) {
+            if (i % 3 == 1) {
+                System.out.print(base + " ");
+            } else {
+                System.out.print((base + 3) + " ");
+            }
+
+            // Incrementa o base a cada três elementos
+            if (i % 3 == 0) {
+                base++;
+            }
+        }
+
+        scanner.close();
+    }
+}
